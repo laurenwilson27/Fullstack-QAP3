@@ -1,0 +1,21 @@
+body {
+  background-color: #333;
+  margin: 0px;
+}
+
+.pageFrame {
+  width: 1000px;
+  margin: 0px auto;
+  height: 100vh;
+
+  background-color: white;
+}
+
+header {
+  padding: 24px 0px;
+}
+
+header img {
+  display: block;
+  margin: 0px auto;
+}
