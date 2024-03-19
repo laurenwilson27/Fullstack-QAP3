@@ -5,21 +5,29 @@
   <body>
     <div class="pageFrame">
       <%- include("fragments/header"); %>
+      <div class="userListHead">Scoreboard</div>
       <table class="userList">
         <thead>
-          <tr>
-            <td class="userListHead" colspan="2">Scoreboard</td>
+          <tr class="userListLabels">
+            <td witdh="200">Name</td>
+            <td>Score</td>
           </tr>
         </thead>
         <tbody>
           <% if (users.length > 0) { users.forEach(user => { %>
           <tr class="userListRow">
-            <td>
+            <td class="userListData" width="200">
               <%- user.display_name ? user.display_name : user.username %>
             </td>
-            <td><span class="userPoints"><%= user.points %></span></td>
+            <td class="userListData">
+              <span class="userPoints"><%= user.points %></span>
+            </td>
           </tr>
-          <% })} else { %> <% } %>
+          <% })} else { %>
+          <tr>
+            <td>Users could not be loaded.</td>
+          </tr>
+          <% } %>
         </tbody>
       </table>
     </div>
