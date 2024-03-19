@@ -19,3 +19,26 @@ header img {
   display: block;
   margin: 0px auto;
 }
+
+.loginFormHeader {
+  text-align: right;
+
+  width: 500px;
+  height: 24px;
+
+  border: 2px solid gray;
+  border-top-left-radius: 24px;
+
+  margin: 0px auto;
+
+  font-family: "VT323", monospace;
+  font-size: 24px;
+}
+
+.loginForm {
+  width: 500px;
+  border: 2px solid gray;
+  border-top: none;
+
+  margin: 0px auto;
+}

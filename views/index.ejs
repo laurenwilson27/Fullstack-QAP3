@@ -1,15 +1,12 @@
+<%# The default page shown for a user who is not logged in %>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="resources/styles.css" />
-    <title>Needs A Title</title>
-  </head>
+  <%- include("fragments/htmlHead"); %>
   <body>
     <div class="pageFrame">
-      <%- include('./fragments/header.ejs'); %>
-      <div>page content goes here</div>
+      <%- include("fragments/header"); %>
+      <div class="loginFormHeader">Login Form!</div>
+      <form action="" class="loginForm"></form>
     </div>
   </body>
 </html>
