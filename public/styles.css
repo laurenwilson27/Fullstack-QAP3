@@ -1,6 +1,7 @@
 body {
   background: url("4pxgrid.png"),
-    linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 96, 255, 1) 100%);
+    linear-gradient(180deg, rgba(0, 96, 255, 0) 0%, rgba(0, 96, 255, 1) 100%),
+    #f22;
   margin: 0px;
 
   color: #eee;
