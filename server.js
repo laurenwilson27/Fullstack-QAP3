@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+app.get("/users");
+
 // Listen!
 app.listen(PORT, () => {
   console.log(

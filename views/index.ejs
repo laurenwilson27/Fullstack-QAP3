@@ -5,8 +5,31 @@
   <body>
     <div class="pageFrame">
       <%- include("fragments/header"); %>
-      <div class="loginFormHeader">Login Form!</div>
-      <form action="" class="loginForm"></form>
+      <div class="panelContainer">
+        <div>
+          <div class="loginPanelHeader">Login</div>
+          <form action="" class="loginPanel">
+            <div class="loginFields">
+              <div>
+                <label for="username">Username: </label
+                ><input type="text" name="username" id="username" />
+              </div>
+              <div>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" />
+              </div>
+            </div>
+            <button class="loginButton" type="submit">Login</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="registerPanelHeader">Register</div>
+          <form action="" class="registerPanel">
+            <a href="/register">Click here to register a new account!</a>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
