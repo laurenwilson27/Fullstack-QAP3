@@ -1,0 +1,27 @@
+<%# A list of all users. There is no pagination implemented for this QAP. %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("fragments/htmlHead"); %>
+  <body>
+    <div class="pageFrame">
+      <%- include("fragments/header"); %>
+      <table class="userList">
+        <thead>
+          <tr>
+            <td class="userListHead" colspan="2">Scoreboard</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (users.length > 0) { users.forEach(user => { %>
+          <tr class="userListRow">
+            <td>
+              <%- user.display_name ? user.display_name : user.username %>
+            </td>
+            <td><span class="userPoints"><%= user.points %></span></td>
+          </tr>
+          <% })} else { %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 const express = require("express");
 
 const PORT = 3000;
+global.DEBUG = true;
 
 const app = express();
 app.set("view engine", "ejs");
@@ -14,7 +15,8 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.get("/users");
+const usersRouter = require("./routes/users");
+app.use("/users", usersRouter);
 
 // Listen!
 app.listen(PORT, () => {
