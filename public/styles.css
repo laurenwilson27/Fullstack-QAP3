@@ -127,3 +127,53 @@ header img {
 .registerPanel a:hover {
   text-decoration: underline;
 }
+
+/* User list */
+.userList {
+  width: 800px;
+  margin: 0px auto;
+
+  border-collapse: collapse;
+}
+
+.userListHead {
+  width: 800px;
+  height: 28px;
+  box-sizing: border-box;
+  padding-right: 12px;
+
+  text-align: center;
+
+  background-color: #07d;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  margin: 0px auto;
+
+  font-family: "VT323", monospace;
+  font-size: 24px;
+}
+
+.userListLabels {
+  background: #07d;
+
+  border: none;
+}
+
+.userListLabels td {
+  padding: 8px 12px;
+}
+
+.userListRow {
+  background: #04a;
+
+  border-bottom: 1px solid #07d;
+}
+
+.userListRow td {
+  padding: 8px 12px;
+}
+
+.userPoints {
+  font-weight: bold;
+}
