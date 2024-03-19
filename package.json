@@ -4,6 +4,7 @@
   "description": "Demo web service that allows users to register, update, and delete accounts",
   "main": "server.js",
   "scripts": {
+    "devServer": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lauren Wilson",
@@ -11,6 +12,10 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "ejs": "^3.1.9",
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
