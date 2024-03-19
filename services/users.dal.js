@@ -19,14 +19,15 @@ const getUsers = async () => {
 };
 
 // Returns the new user row in the database, or a blank array if the request fails
-const createUser = async (username, password) => {
-  const query = "INSERT INTO users (username, password) VALUES ($1, $2)";
+const addUser = async (username, password, email) => {
+  const query =
+    "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)";
 
   try {
     // Use bcrypt to generate a salted password hash
     const hash = await bcrypt.hash(password, 10);
 
-    const result = await psql.query(query, [username, hash]);
+    const result = await psql.query(query, [username, hash, email]);
     return result;
   } catch (e) {
     return [];
