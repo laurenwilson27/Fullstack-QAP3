@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getUsers, addUser } = require("../services/users.dal");
+const { getUsers, getUserById, addUser } = require("../services/users.dal");
 
 // Generic show all users
 router.get("/", async (req, res) => {
@@ -12,7 +12,13 @@ router.get("/", async (req, res) => {
 });
 
 // Show specific user
-router.get("/:id", async (req, res) => {});
+router.get("/:id", async (req, res) => {
+  const user = await getUserById(req.params.id).then((result) => {
+    // If the user wasn't found, the result is []
+    if (result.length > 0) res.render("userProfile", { user: result[0] });
+    else res.render("error");
+  });
+});
 
 // Create new user
 router.post("/", async (req, res) => {

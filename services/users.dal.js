@@ -19,6 +19,21 @@ const getUsers = async () => {
   }
 };
 
+const getUserById = async (id) => {
+  const query = "SELECT * FROM public.users WHERE id = $1";
+
+  try {
+    const result = await psql.query(query, [id]);
+
+    if (DEBUG) console.log(`found ${result.rows.length} users with id ${id}`);
+
+    return result.rows;
+  } catch (e) {
+    if (DEBUG) console.error(e);
+    return [];
+  }
+};
+
 // Returns the new user row in the database. Throws an error if this fails.
 const addUser = async (username, password, email) => {
   const query =
@@ -42,4 +57,4 @@ const addUser = async (username, password, email) => {
   }
 };
 
-module.exports = { getUsers, addUser };
+module.exports = { getUsers, getUserById, addUser };
