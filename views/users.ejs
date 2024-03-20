@@ -17,7 +17,9 @@
           <% if (users.length > 0) { users.forEach(user => { %>
           <tr class="userListRow">
             <td class="userListData" width="200">
-              <%- user.display_name ? user.display_name : user.username %>
+              <a href="/users/<%= user.id %>"
+                ><%- user.display_name ? user.display_name : user.username %></a
+              >
             </td>
             <td class="userListData">
               <span class="userPoints"><%= user.points %></span>

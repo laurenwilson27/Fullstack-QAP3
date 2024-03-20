@@ -31,6 +31,20 @@ header img {
   gap: 8px;
 }
 
+.headerNav {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.headerNav a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.headerNav a:hover {
+  text-decoration: underline;
+}
+
 /* Login panel */
 .loginPanelHeader {
   width: 500px;
@@ -176,6 +190,10 @@ header img {
   padding: 8px 12px;
 }
 
+.userListData a {
+  color: #eee;
+}
+
 .userPoints {
   font-weight: bold;
 }
@@ -250,4 +268,52 @@ header img {
 
 .doRegisterButton {
   background-color: none;
+}
+
+/* User profile */
+
+.userProfilePanel {
+  box-sizing: border-box;
+  width: 800px;
+  margin: 0px auto;
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+
+  background: #04a;
+  /* border: #07d; */
+  border-radius: 16px;
+}
+
+.profileNametag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 50%;
+
+  font-family: "Graduate", "Times New Roman", Times, serif;
+  font-size: 3em;
+
+  border-right: 2px solid #07d;
+}
+
+.profileScoretag {
+  padding-left: 8px;
+  min-width: 50%;
+
+  font-family: "Graduate", "Times New Roman", Times, serif;
+  font-size: 3em;
+}
+
+.profileFootnote {
+  padding-left: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+
+.profileScoreLabel {
+  padding-left: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
 }
