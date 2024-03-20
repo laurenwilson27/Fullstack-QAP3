@@ -12,9 +12,15 @@ app.use("/resources", express.static("public"));
 
 // Index page. By default, all views to be handled by the view engine are inside the 'views' directory
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 
+// Registration page
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+// Router for all user API routes
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 

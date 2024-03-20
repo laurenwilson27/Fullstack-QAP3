@@ -1,13 +1,13 @@
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS public.users
 (
-    user_id serial NOT NULL,
-    user_name character varying NOT NULL,
-    display_name character varying,
+    id serial NOT NULL,
+    username character varying NOT NULL UNIQUE,
     password character varying NOT NULL,
+    email character varying NOT NULL UNIQUE,
+    display_name character varying,
     points integer NOT NULL DEFAULT 0,
-    colour1 integer NOT NULL DEFAULT 0,
-    colour2 integer NOT NULL DEFAULT 0,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (id)
 );
 
-GRANT ALL ON TABLE public.users TO "qap3-user";
+ALTER TABLE IF EXISTS public.users
+    OWNER to "qap3-user";
