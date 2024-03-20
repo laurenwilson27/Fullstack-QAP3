@@ -1,4 +1,4 @@
-const psql = require("./pg_pool");
+const psql = require("./pg.auth");
 const bcrypt = require("bcrypt");
 
 // Returns all users, or a blank array if the request fails
@@ -19,7 +19,7 @@ const getUsers = async () => {
   }
 };
 
-// Returns the new user row in the database, or a blank array if the request fails
+// Returns the new user row in the database. Throws an error if this fails.
 const addUser = async (username, password, email) => {
   const query =
     "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)";
