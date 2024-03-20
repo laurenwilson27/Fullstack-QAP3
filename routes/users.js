@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getUsers } = require("../services/users.dal");
+const { getUsers, addUser } = require("../services/users.dal");
 
 // Generic show all users
 router.get("/", async (req, res) => {
@@ -15,6 +15,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {});
 
 // Create new user
-router.post("/", async (req, res) => {});
+router.post("/", async (req, res) => {
+  // Note that this is very insecure; none of the inputs are validated
+  addUser(req.body.username, req.body.password, req.body.email)
+    .then(() => {
+      res.redirect("/users");
+    })
+    .catch((e) => {
+      console.error("Failed to create new user: " + e);
+    });
+});
 
 module.exports = router;

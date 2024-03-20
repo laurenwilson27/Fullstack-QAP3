@@ -147,8 +147,8 @@ header img {
   text-align: center;
 
   background-color: #07d;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
 
   margin: 0px auto;
 
@@ -178,4 +178,76 @@ header img {
 
 .userPoints {
   font-weight: bold;
+}
+
+/* Registration page */
+
+.registerPanelContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.registerFormHeader {
+  width: 800px;
+  height: 28px;
+  box-sizing: border-box;
+
+  background-color: #0a0;
+  border: 2px solid #070;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+
+  margin: 0px auto;
+
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  text-align: center;
+}
+
+.registerFormPanel {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+  width: 800px;
+  margin: 0px auto;
+  padding: 12px;
+
+  background-color: #070;
+  text-align: center;
+}
+
+.registerField {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  padding: 12px;
+  gap: 8px;
+}
+
+.registerField label {
+  display: inline-block;
+}
+
+.doRegisterButton {
+  width: 300px;
+  height: 48px;
+  margin-top: 8px;
+
+  background-color: #eee;
+  color: #111;
+  border-radius: 12px;
+  border: 0px;
+
+  font-weight: bold;
+}
+
+.doRegisterButton:hover {
+  background-color: #5fa;
+  cursor: pointer;
+}
+
+.doRegisterButton {
+  background-color: none;
 }

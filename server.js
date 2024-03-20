@@ -17,9 +17,10 @@ app.get("/", (req, res) => {
 
 // Registration page
 app.get("/register", (req, res) => {
-  res.render("");
+  res.render("register");
 });
 
+// Router for all user API routes
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 

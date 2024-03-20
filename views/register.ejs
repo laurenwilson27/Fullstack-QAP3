@@ -1,0 +1,41 @@
+<%# Page used to register a new user account %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("fragments/htmlHead"); %>
+  <body>
+    <div class="pageFrame">
+      <%- include("fragments/header"); %>
+      <div class="registerPanelContainer">
+        <div class="registerFormHeader">Register Account</div>
+        <form class="registerFormPanel" action="users/" method="post">
+          <div class="registerField">
+            <label for="username">Username: </label
+            ><input
+              type="text"
+              name="username"
+              id="username"
+              minlength="4"
+              required
+            />
+          </div>
+          <div class="registerField">
+            <label for="password">Email:</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="registerField">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              minlength="8"
+              required
+            />
+          </div>
+          <div class="registerField"></div>
+          <button class="doRegisterButton" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

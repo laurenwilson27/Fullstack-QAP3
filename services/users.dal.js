@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 // This only returns public data such as user/display name and points
 const getUsers = async () => {
   const query =
-    "SELECT user_id, username, display_name, points FROM public.users ORDER BY points DESC";
+    "SELECT id, username, display_name, points FROM public.users ORDER BY points DESC";
 
   try {
     const result = await psql.query(query);
@@ -34,8 +34,9 @@ const addUser = async (username, password, email) => {
 
     return result;
   } catch (e) {
-    if (DEBUG) console.error(e);
-    return [];
+    // async functions are contained inside an implicit 'try' block
+    // errors can be thrown, and caught like a promise rejection
+    throw new Error(e);
   }
 };
 
