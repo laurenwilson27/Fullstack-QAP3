@@ -28,6 +28,8 @@ const addUser = async (username, password, email) => {
     // Use bcrypt to generate a salted password hash
     const hash = await bcrypt.hash(password, 10);
 
+    // The salted hash is used in the parameterized query
+    // Only the hash needs to be stored in the database
     const result = await psql.query(query, [username, hash, email]);
 
     if (DEBUG) console.log("new user: " + username);

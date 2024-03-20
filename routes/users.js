@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
       res.redirect("/users");
     })
     .catch((e) => {
-      console.error("Failed to create new user: " + e);
+      console.error(`Failed to create new user ${req.body.username}: ${e}`);
     });
 });
 
