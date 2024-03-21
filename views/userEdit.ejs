@@ -1,0 +1,26 @@
+<%# The default page shown for a user who is not logged in %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("fragments/htmlHead"); %>
+  <body>
+    <div class="pageFrame">
+      <%- include("fragments/header"); %>
+      <div class="userProfilePanel">
+        <div class="profileNametag">
+          <div>
+            <%- user.display_name ? user.display_name : user.username %>
+          </div>
+          <% if (user.display_name) { %>
+          <div class="profileFootnote">(<%= user.username %>)</div>
+          <% } %>
+        </div>
+        <div class="profileScoretag">
+          <div>
+            <%= user.points %><span class="profileScoreLabel">Points</span>
+          </div>
+        </div>
+      </div>
+      but this time you can edit
+    </div>
+  </body>
+</html>
