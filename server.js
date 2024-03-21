@@ -12,8 +12,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 // Requests with _method as a paramater will be treated as the specified request method
 app.use(methodOverride("_method"));
-
-// Use the 'static' middleware to map the 'public' directory's static files to a route
+// Map 'public' directory's static files to a route
 app.use("/resources", express.static("public"));
 
 // Registration page
