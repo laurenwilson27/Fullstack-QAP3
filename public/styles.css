@@ -313,7 +313,8 @@ header img {
 }
 
 .profileScoreLabel {
-  padding-left: 16px;
+  padding-left: 8px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: medium;
+  font-weight: bold;
 }
