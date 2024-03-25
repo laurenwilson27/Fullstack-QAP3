@@ -20,7 +20,66 @@
           </div>
         </div>
       </div>
-      but this time you can edit
+      <form class="userEditForm" action="/users?_method=PATCH" method="post">
+        <input type="hidden" name="id" value="<%= user.id %>" />
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            Username:
+            <input type="text" value="<%= user.username %>" disabled />
+          </div>
+          <div class="attributeInfo">
+            This is used for login, and cannot be changed.
+          </div>
+        </div>
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            Display name:
+            <input
+              type="text"
+              name="display_name"
+              value="<%= user.display_name %>"
+            />
+          </div>
+          <div class="attributeInfo">
+            If you specify a display name, it will be shown on your profile.
+          </div>
+        </div>
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            Password:
+            <input
+              type="password"
+              name="password"
+              value=""
+              placeholder="********"
+            />
+          </div>
+          <div class="attributeInfo">
+            You can change your password by editing this value.
+          </div>
+        </div>
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            Email:
+            <input type="text" name="email" value="<%= user.email %>" />
+          </div>
+          <div class="attributeInfo">
+            Your email address. Note that this must be unique. Your email
+            address will not be shared with other users.
+          </div>
+        </div>
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            Score:
+            <input type="number" name="points" value="<%= user.points %>" />
+          </div>
+          <div class="attributeInfo">
+            Normally it would be silly to let players change their score, but
+            this is just a proof of concept. :)
+          </div>
+        </div>
+        <button type="submit" class="loginButton">Update</button>
+      </form>
     </div>
   </body>
 </html>

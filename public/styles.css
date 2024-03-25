@@ -318,3 +318,54 @@ header img {
   font-size: medium;
   font-weight: bold;
 }
+
+/* User edit */
+.userEditForm {
+  width: 800px;
+  margin: 16px auto;
+  padding: 8px;
+
+  background-color: #ddd;
+  color: #222;
+
+  border-radius: 8px;
+}
+
+.userAttribute {
+  display: flex;
+}
+
+.editUserAttribute {
+  width: 50%;
+
+  text-align: right;
+  padding: 0px 8px 16px 0px;
+  border-right: 2px solid #222;
+}
+
+.attributeInfo {
+  width: 50%;
+  padding: 0px 0px 16px 8px;
+
+  color: #555;
+}
+
+.loginButton {
+  display: block;
+
+  width: 100px;
+  height: 48px;
+  margin: 16px auto 0px auto;
+
+  background-color: #eee;
+  color: #111;
+  border: 1px solid #555;
+  border-radius: 12px;
+
+  font-weight: bold;
+}
+
+.loginButton:hover {
+  background-color: #f5a;
+  cursor: pointer;
+}

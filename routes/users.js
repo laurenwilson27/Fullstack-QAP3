@@ -6,6 +6,7 @@ const {
   getUserById,
   addUser,
   getUserAuth,
+  updateUser,
 } = require("../services/users.dal");
 
 // Generic show all users
@@ -54,7 +55,22 @@ router.post("/", async (req, res) => {
     })
     .catch((e) => {
       console.error(`Failed to create new user ${req.body.username}: ${e}`);
+      res.redirect("/users");
     });
+});
+
+// Update a specific user. This is, again, very insecure.
+router.patch("/", async (req, res) => {
+  // Pull the username out of the request
+  const id = req.body.id;
+  delete req.body.id;
+
+  console.log(req.body);
+
+  // Use the update user DAL function
+  updateUser(id, req.body);
+
+  res.redirect("/users/" + req.body.id);
 });
 
 module.exports = router;
