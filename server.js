@@ -1,26 +1,31 @@
 const express = require("express");
+const methodOverride = require("method-override");
 
 const PORT = 3000;
 global.DEBUG = true;
 
 const app = express();
+// Configure middleware
+// Use EJS to render views
 app.set("view engine", "ejs");
+// Support for urlencodedforms
 app.use(express.urlencoded({ extended: true }));
-
-// Use the 'static' middleware to map the 'public' directory's static files to a route
+// Requests with _method as a paramater will be treated as the specified request method
+app.use(methodOverride("_method"));
+// Map 'public' directory's static files to a route
 app.use("/resources", express.static("public"));
-
-// Index page. By default, all views to be handled by the view engine are inside the 'views' directory
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 // Registration page
 app.get("/register", (req, res) => {
   res.render("register");
 });
 
-// Router for all user API routes
+// Index page. By default, all views to be handled by the view engine are inside the 'views' directory
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Router for all '/users' routes
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 
