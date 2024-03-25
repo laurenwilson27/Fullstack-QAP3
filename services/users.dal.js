@@ -95,7 +95,7 @@ const addUser = async (username, password, email) => {
 // Updates a user. Their username must be specified, as well as a data object containing key-value pairs.
 // The key-value pairs must match columns in the users table
 const updateUser = async (id, data) => {
-  let query = "UPDATE users SET ";
+  let query = "UPDATE public.users SET ";
 
   try {
     if (data.length < 1) throw new error("No data to UPDATE was specified.");
@@ -104,15 +104,14 @@ const updateUser = async (id, data) => {
     if (data.password) data.password = await bcrypt.hash(data.password, 10);
 
     // Iterate over the key-value pairs
-    let keys = [];
+    let sqlKeys = [];
     let values = [];
 
     // Inner function for this next part
-    const addKey = (key, isInt = false) => {
+    const addKey = (key) => {
       // The user id will be $1, so we start at $2
-      keys.push(`${key}=$${keys.length + 2}`);
-      if (isInt) values.push(parseInt(data[key]));
-      else values.push(data[key]);
+      sqlKeys.push(`${key}=$${sqlKeys.length + 2}`);
+      values.push(data[key]);
     };
 
     // See if the update data contains values that are allowed to be updated
@@ -124,7 +123,7 @@ const updateUser = async (id, data) => {
 
     // Join the collected pairs so that the format is X=Y, A=B, etc.
     // Then, add them to the query
-    query += keys.join(", ");
+    query += sqlKeys.join(", ");
     query += " WHERE id=$1";
 
     if (DEBUG) {

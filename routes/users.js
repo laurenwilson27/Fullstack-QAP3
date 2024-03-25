@@ -70,7 +70,7 @@ router.patch("/", async (req, res) => {
   // Use the update user DAL function
   updateUser(id, req.body);
 
-  res.redirect("/users/" + req.body.id);
+  res.redirect("/users/" + id);
 });
 
 module.exports = router;
