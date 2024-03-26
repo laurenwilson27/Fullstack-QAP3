@@ -350,7 +350,7 @@ header img {
   color: #555;
 }
 
-.loginButton {
+.updateButton {
   display: block;
 
   width: 100px;
@@ -365,7 +365,7 @@ header img {
   font-weight: bold;
 }
 
-.loginButton:hover {
+.updateButton:hover {
   background-color: #f5a;
   cursor: pointer;
 }

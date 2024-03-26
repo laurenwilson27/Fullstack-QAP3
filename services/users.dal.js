@@ -46,6 +46,10 @@ const getUserById = async (id) => {
 const getUserAuth = async (username, password) => {
   const query = "SELECT * FROM public.users WHERE username = $1";
 
+  // Usernames are always lowercase, so convert input to match
+  // This might be a bit naïve when it comes to international characters, which are not prohibited during user creation
+  username = username.toLowerCase();
+
   try {
     const result = await psql.query(query, [username]);
 
@@ -71,8 +75,9 @@ const getUserAuth = async (username, password) => {
 
 // Returns the new user row in the database. Throws an error if this fails.
 const addUser = async (username, password, email) => {
+  // Note that the postgres will record the username and email in lower case
   const query =
-    "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)";
+    "INSERT INTO users (username, password, email) VALUES (LOWER($1), $2, LOWER($3))";
 
   try {
     // Use bcrypt to generate a salted password hash
