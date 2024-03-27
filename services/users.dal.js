@@ -46,6 +46,10 @@ const getUserById = async (id) => {
 const getUserAuth = async (username, password) => {
   const query = "SELECT * FROM public.users WHERE username = $1";
 
+  // Usernames are always lowercase, so convert input to match
+  // This might be a bit naïve when it comes to international characters, which are not prohibited during user creation
+  username = username.toLowerCase();
+
   try {
     const result = await psql.query(query, [username]);
 
@@ -71,8 +75,9 @@ const getUserAuth = async (username, password) => {
 
 // Returns the new user row in the database. Throws an error if this fails.
 const addUser = async (username, password, email) => {
+  // Note that the postgres will record the username and email in lower case
   const query =
-    "INSERT INTO users (username, password, email) VALUES ($1, $2, $3)";
+    "INSERT INTO users (username, password, email) VALUES (LOWER($1), $2, LOWER($3))";
 
   try {
     // Use bcrypt to generate a salted password hash
@@ -142,4 +147,30 @@ const updateUser = async (id, data) => {
   }
 };
 
-module.exports = { getUsers, getUserById, addUser, getUserAuth, updateUser };
+// Deletes a user by id. Returns true if successful.
+const deleteUser = async (id) => {
+  const query = "DELETE FROM users WHERE id = $1";
+
+  console.log("delete attempt: " + id);
+
+  try {
+    result = await psql.query(query, [id]);
+
+    if (DEBUG) console.log("deleted user " + id);
+
+    return true;
+  } catch (e) {
+    console.log(e);
+
+    return false;
+  }
+};
+
+module.exports = {
+  getUsers,
+  getUserById,
+  addUser,
+  getUserAuth,
+  updateUser,
+  deleteUser,
+};

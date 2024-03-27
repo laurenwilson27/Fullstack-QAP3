@@ -350,7 +350,7 @@ header img {
   color: #555;
 }
 
-.loginButton {
+.updateButton {
   display: block;
 
   width: 100px;
@@ -365,7 +365,47 @@ header img {
   font-weight: bold;
 }
 
-.loginButton:hover {
+.updateButton:hover {
   background-color: #f5a;
+  cursor: pointer;
+}
+
+/* User delete */
+.userDeleteForm {
+  width: 800px;
+  margin: 16px auto;
+  padding: 8px;
+
+  background-color: #411;
+  color: #d00;
+
+  border-radius: 8px;
+}
+
+.userDeleteForm .attributeInfo {
+  color: #d00;
+}
+
+.deleteOk {
+  margin-top: 12px;
+}
+
+.deleteButton {
+  display: block;
+
+  width: 100px;
+  height: 48px;
+  margin: 16px 16px 0px auto;
+
+  background-color: #411;
+  color: #eee;
+  border: 1px solid #d00;
+  border-radius: 12px;
+
+  font-weight: bold;
+}
+
+.deleteButton:hover {
+  background-color: #600;
   cursor: pointer;
 }

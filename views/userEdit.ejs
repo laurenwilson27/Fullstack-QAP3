@@ -78,7 +78,26 @@
             this is just a proof of concept. :)
           </div>
         </div>
-        <button type="submit" class="loginButton">Update</button>
+        <button type="submit" class="updateButton">Update</button>
+      </form>
+      <form
+        class="userDeleteForm"
+        action="/users/<%= user.id %>?_method=DELETE"
+        method="post"
+      >
+        <div class="userAttribute">
+          <div class="editUserAttribute">
+            <button class="deleteButton">Delete Account</button>
+          </div>
+          <div class="attributeInfo">
+            Deleting your account will remove you from the scoreboard. This
+            action CANNOT be undone.
+            <div class="deleteOk">
+              <input type="checkbox" name="deleteOk" id="deleteOk" required />
+              <label for="deleteOk">I want to delete my account.</label>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </body>
