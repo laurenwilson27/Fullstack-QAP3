@@ -61,15 +61,9 @@ router.post("/", async (req, res) => {
 });
 
 // Update a specific user. This is, again, very insecure.
-router.patch("/", async (req, res) => {
-  // Pull the username out of the request
-  const id = req.body.id;
-  delete req.body.id;
-
-  console.log(req.body);
-
+router.patch("/:id", async (req, res) => {
   // Use the update user DAL function
-  await updateUser(id, req.body);
+  await updateUser(req.params.id, req.body);
 
   res.redirect("/users/" + id);
 });
