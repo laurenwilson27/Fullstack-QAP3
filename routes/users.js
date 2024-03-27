@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
   const users = await getUsers();
 
   // Render the userlist based on the response from the users DAL
-  res.render("users", { users });
+  res.render("users", { users: users.data });
 });
 
 router.get("/login", async (req, res) => {
@@ -42,7 +42,8 @@ router.get("/login", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const user = await getUserById(req.params.id).then((result) => {
     // If the user wasn't found, the result is []
-    if (result.length > 0) res.render("userProfile", { user: result[0] });
+    if (result.data.length > 0)
+      res.render("userProfile", { user: result.data[0] });
     else res.render("error");
   });
 });
@@ -65,7 +66,7 @@ router.patch("/:id", async (req, res) => {
   // Use the update user DAL function
   await updateUser(req.params.id, req.body);
 
-  res.redirect("/users/" + id);
+  res.redirect("/users/" + req.params.id);
 });
 
 // Delete a specific user. (Surprise, it's insecure)
