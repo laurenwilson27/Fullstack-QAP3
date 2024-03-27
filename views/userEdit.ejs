@@ -20,8 +20,11 @@
           </div>
         </div>
       </div>
-      <form class="userEditForm" action="/users?_method=PATCH" method="post">
-        <input type="hidden" name="id" value="<%= user.id %>" />
+      <form
+        class="userEditForm"
+        action="/users/<%= user.id %>?_method=PATCH"
+        method="post"
+      >
         <div class="userAttribute">
           <div class="editUserAttribute">
             Username:

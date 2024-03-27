@@ -1,0 +1,3 @@
+# Sample API request.
+# This can be tested inside Visual Studio Code using the REST Client extension.
+GET http://localhost:3000/api/3

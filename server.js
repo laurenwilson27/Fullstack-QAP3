@@ -29,6 +29,10 @@ app.get("/", (req, res) => {
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 
+// Router for API routes
+const apiRouter = require("./routes/api");
+app.use("/api", apiRouter);
+
 // Listen!
 app.listen(PORT, () => {
   console.log(

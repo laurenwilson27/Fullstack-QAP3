@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 // Returns all users, or an empty array if the request fails
 // This only returns public data such as user/display name and points
+// Pagination has not been implemented.
 const getUsers = async () => {
   const query =
     "SELECT id, username, display_name, points FROM public.users ORDER BY points DESC";
@@ -13,10 +14,11 @@ const getUsers = async () => {
 
     if (DEBUG) console.log(`found ${result.rows.length} users`);
 
-    return result.rows;
+    return { status: 200, data: result.rows };
   } catch (e) {
-    if (DEBUG) console.error(e);
-    return [];
+    console.error(e);
+
+    return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
 };
 
@@ -31,10 +33,11 @@ const getUserById = async (id) => {
 
     if (DEBUG) console.log(`found ${result.rows.length} users with id ${id}`);
 
-    return result.rows;
+    return { status: 200, data: result.rows };
   } catch (e) {
-    if (DEBUG) console.error(e);
-    return [];
+    console.error(e);
+
+    return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
 };
 
@@ -67,7 +70,7 @@ const getUserAuth = async (username, password) => {
         };
     }
   } catch (e) {
-    if (DEBUG) console.error(e);
+    console.error(e);
 
     return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
@@ -89,11 +92,12 @@ const addUser = async (username, password, email) => {
 
     if (DEBUG) console.log("new user: " + username);
 
-    return result;
+    // HTTP 201 CREATED
+    return { status: 201, data: result.rows };
   } catch (e) {
-    // async functions are contained inside an implicit 'try' block
-    // errors can be thrown, and caught like a promise rejection
-    throw new Error(e);
+    console.error(e);
+
+    return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
 };
 
@@ -134,14 +138,13 @@ const updateUser = async (id, data) => {
     if (DEBUG) {
       console.log("q " + query);
       console.log("v " + [id, ...values]);
-      console.log("t " + [id, ...values].map((value) => typeof value));
     }
 
     const result = await psql.query(query, [id, ...values]);
 
-    return { status: 200 };
+    return { status: 200, data: result.rows };
   } catch (e) {
-    if (DEBUG) console.error(e);
+    console.error(e);
 
     return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
@@ -158,11 +161,11 @@ const deleteUser = async (id) => {
 
     if (DEBUG) console.log("deleted user " + id);
 
-    return true;
+    return { status: 200 };
   } catch (e) {
-    console.log(e);
+    if (DEBUG) console.log(e);
 
-    return false;
+    return { status: 503, message: "Database query failed unexpectedly: " + e };
   }
 };
 
