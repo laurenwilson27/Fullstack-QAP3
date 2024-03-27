@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+// Middleware to parse json request bodies
+router.use(express.json());
+
 const {
   getUsers,
   getUserById,

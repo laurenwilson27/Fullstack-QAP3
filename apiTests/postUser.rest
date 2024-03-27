@@ -1,8 +1,10 @@
 # Sample API request.
 # This can be tested inside Visual Studio Code using the REST Client extension.
 POST http://localhost:3000/api
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
-username=craig
-&password=password123
-&email=craig@example.com
+{
+    "username": "apiUser",
+    "password": "password123",
+    "email": "user@example.com"
+}
