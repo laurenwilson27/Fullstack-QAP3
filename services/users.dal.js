@@ -1,4 +1,3 @@
-const { type } = require("os");
 const psql = require("./pg.auth");
 const bcrypt = require("bcrypt");
 

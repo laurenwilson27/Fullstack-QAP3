@@ -1,0 +1,18 @@
+# Find all users
+SELECT id, username, display_name, points FROM public.users ORDER BY points DESC;
+
+# Find specific user by ID
+SELECT * FROM public.users WHERE id = $1
+
+# Find specific user by username
+SELECT * FROM public.users WHERE username = $1;
+
+# Insert new user
+INSERT INTO users (username, password, email) VALUES (LOWER($1), $2, LOWER($3));
+
+# Update user (with all allowed values)
+UPDATE public.users SET display_name = $2, password = $3, email = $4, points = $5 WHERE id = $1;
+
+# Delete user
+DELETE FROM users WHERE id = $1;
+

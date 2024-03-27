@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS public.users
+CREATE TABLE IF NOT EXISTS users
 (
     id serial NOT NULL,
     username character varying NOT NULL UNIQUE,
@@ -8,6 +8,3 @@ CREATE TABLE IF NOT EXISTS public.users
     points integer NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
-
-ALTER TABLE IF EXISTS public.users
-    OWNER to "qap3-user";
