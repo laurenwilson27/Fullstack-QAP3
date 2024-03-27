@@ -409,3 +409,15 @@ header img {
   background-color: #600;
   cursor: pointer;
 }
+
+.errorPanel {
+  width: 400px;
+  margin: 16px auto;
+  padding: 8px 16px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+}
+
+.errorPanel h1 {
+  margin: 4px;
+}
