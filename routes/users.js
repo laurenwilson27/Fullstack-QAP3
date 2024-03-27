@@ -7,6 +7,7 @@ const {
   addUser,
   getUserAuth,
   updateUser,
+  deleteUser,
 } = require("../services/users.dal");
 
 // Generic show all users
@@ -68,9 +69,16 @@ router.patch("/", async (req, res) => {
   console.log(req.body);
 
   // Use the update user DAL function
-  updateUser(id, req.body);
+  await updateUser(id, req.body);
 
   res.redirect("/users/" + id);
+});
+
+// Delete a specific user. (Surprise, it's insecure)
+router.delete("/:id", async (req, res) => {
+  await deleteUser(req.params.id);
+
+  res.redirect("/users");
 });
 
 module.exports = router;

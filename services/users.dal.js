@@ -147,4 +147,30 @@ const updateUser = async (id, data) => {
   }
 };
 
-module.exports = { getUsers, getUserById, addUser, getUserAuth, updateUser };
+// Deletes a user by id. Returns true if successful.
+const deleteUser = async (id) => {
+  const query = "DELETE FROM users WHERE id = $1";
+
+  console.log("delete attempt: " + id);
+
+  try {
+    result = await psql.query(query, [id]);
+
+    if (DEBUG) console.log("deleted user " + id);
+
+    return true;
+  } catch (e) {
+    console.log(e);
+
+    return false;
+  }
+};
+
+module.exports = {
+  getUsers,
+  getUserById,
+  addUser,
+  getUserAuth,
+  updateUser,
+  deleteUser,
+};
