@@ -25,8 +25,7 @@ router.get("/:id", async (req, res) => {
 
 // Create new user
 router.post("/", async (req, res) => {
-  // An error should be sent if there are missing parameters
-  if (req.params.username && req.params.password && req.params.email) {
+  if (req.body.username && req.body.password && req.body.email) {
     const result = await addUser(
       req.body.username,
       req.body.password,
