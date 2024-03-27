@@ -34,7 +34,7 @@ router.get("/login", async (req, res) => {
     default:
       if (DEBUG) console.log(`Failed (${result.status}) ${result.message}`);
 
-      res.redirect("/");
+      res.render("error", { status: result.status, message: result.message });
   }
 });
 
@@ -44,7 +44,11 @@ router.get("/:id", async (req, res) => {
     // If the user wasn't found, the result is []
     if (result.data.length > 0)
       res.render("userProfile", { user: result.data[0] });
-    else res.render("error");
+    else
+      res.render("error", {
+        status: 404,
+        message: "Requested user does not exist.",
+      });
   });
 });
 

@@ -1,0 +1,14 @@
+<%# The default page shown for a user who is not logged in %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("fragments/htmlHead"); %>
+  <body>
+    <div class="pageFrame">
+      <%- include("fragments/header"); %>
+      <div class="errorPanel">
+        <h1><%= status %></h1>
+        <%= message %>
+      </div>
+    </div>
+  </body>
+</html>
