@@ -33,6 +33,13 @@ app.use("/users", usersRouter);
 const apiRouter = require("./routes/api");
 app.use("/api", apiRouter);
 
+// Fallback for routes that don't exist
+app.use(async (req, res) => {
+  res
+    .status(404)
+    .render("error", { status: 404, message: "resource not found" });
+});
+
 // Listen!
 app.listen(PORT, () => {
   console.log(
