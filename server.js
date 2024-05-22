@@ -1,8 +1,9 @@
 const express = require("express");
 const methodOverride = require("method-override");
+require("dotenv").config();
 
-const PORT = 3000;
-global.DEBUG = true;
+const PORT = process.env.PORT || 3000;
+global.DEBUG = false;
 
 const app = express();
 // Configure middleware
